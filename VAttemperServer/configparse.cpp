@@ -8,6 +8,8 @@ ConfigParse::ConfigParse()
     :combatPositionNum(0),
     maxRoleNum(0)
 {
+
+
 }
 
 /*
@@ -25,7 +27,7 @@ QString ConfigParse::pasreConfigFile(QString xmlPath)
     QFile file(xmlPath);
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-       ret = "未找到配置文件";
+       ret = "未找到配置文件，请确定final.xml文件在同目录下";
        return ret;
      }
      else

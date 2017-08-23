@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<imagefile>
-    <log net="eth0" name="H1"></log>
-    <log net="lo" name="H2"></log>
-</imagefile>
