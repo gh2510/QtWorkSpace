@@ -1,0 +1,61 @@
+#本配置文件的存放路径为"ata0a/DDS/ddsconfig.conf"
+######################################################################
+#Qos策略，目前只提供两种，ReliabilityQosPolicy和DeadlineQospolicy
+[QosPolicy_Reliability]
+#Qos策略名称
+QosName = ReliabilityQosPolicy
+#可靠性级别，目前为BEST_EFFORT和RELIABLE
+ReliabilityQosKind = BEST_EFFORT
+#在同时使用RELIABILE和ResourceLimitsQosPolicy策略时，锁住数据块的最大时间长度,目前设为空值
+MaxBlockingTimeSecond = 0
+MaxBlockingTimeNanosec = 0
+
+[QosPolicy_Deadline]
+#Qos策略名称
+QosName = DeadlineQosPolicy
+#deadline周期
+PeriodSecond = 0
+PeriodNanosec = 0
+
+#######################################################################
+#hostIP，主机地址
+[HostIP]
+ethName = eth0
+
+#######################################################################
+#缓冲区长度
+[CacheLength]
+CacheLength = 50
+
+#######################################################################
+#leaseDuration周期
+[LeaseDuration]
+PeriodSecond = 30
+PeriodNanosec = 0
+
+#######################################################################
+#multicast设置
+[Multicast]
+UseMulticast = 0
+MultiAddrLow = 231.3.3.3
+MultiAddrNumber = 60
+
+#######################################################################
+#MulticastDiscovery设置
+[MulticastDiscovery]
+UseMulticastDiscovery= 1
+MultiAddr = 231.3.3.2
+
+#######################################################################
+#monitor设置 0为不被监控 1为被监控
+[Monitor]
+Monitor = 0
+
+#######################################################################
+#record设置 0为不被监控 1为被监控
+[Record]
+Record = 0
+
+[HistoricServer]
+iIsHistoricServer = 1
+Domains = 1, 2, 3, 6

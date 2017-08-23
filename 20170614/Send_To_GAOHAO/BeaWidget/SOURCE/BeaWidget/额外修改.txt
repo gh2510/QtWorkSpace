@@ -1,0 +1,13 @@
+mainwindow.cpp中:
+L410～L412代码：
+        mainview->switchmanage->btn_add->setVisible(true);
+        mainview->switchmanage->btn_update->setVisible(true);
+        mainview->switchmanage->btn_delete->setVisible(true);
+将此三行代码注释掉，修改为mainview->switchmanage->setManageBtnVisible(true);
+L424～L426代码：
+	mainview->switchmanage->btn_add->setVisible(false);
+        mainview->switchmanage->btn_update->setVisible(false);
+        mainview->switchmanage->btn_delete->setVisible(false);
+将此三行代码注释掉，修改为mainview->switchmanage->setManageBtnVisible(false);
+
+

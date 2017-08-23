@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>showLogHistory</class>
+ <widget class="QDialog" name="showLogHistory">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(26, 28, 26);
+font: 10pt &quot;Abyssinica SIL&quot;;
+color: rgb(255, 255, 255);</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

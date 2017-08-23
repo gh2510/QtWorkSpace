@@ -1,0 +1,189 @@
+/**
+* @ file Participant.h
+* @ brief RTPS Participant define
+* @ author Jiang Taoran <taoran.seu.edu.cn>
+* @ version 0.1
+* @ history
+*   1. create on 2011-1-11
+*/
+#ifndef _RTPS_PARTICIPANT_H_INCLUDED_
+#define _RTPS_PARTICIPANT_H_INCLUDED_
+
+#include "BasicTypes.h"
+#include "ReturnCode.h"
+#include "rtps/RTPSEntity.h"
+
+#ifndef VXWORKS   //移植
+#include "Windows.h"
+#endif
+
+class DomainParticipant;
+class Topic;
+class DataWriter;
+class DataReader;
+class HistoryCache;
+class Endpoint;
+class Writer;
+class Reader;
+class MessageProcessor;
+class MessageTransmitter;
+class RequestScheduler;
+class ReceiveBuffer;
+
+class Participant : public RTPSEntity {
+public:
+    //构造函数
+    Participant (GUID_t guid,
+        IpList_t defaultIpList,
+        DomainParticipant *domainParticipant);
+
+    //析构函数
+    virtual ~Participant ();
+
+    //结束任务
+    ReturnCode_t deleteSendTask();
+    ReturnCode_t deleteReceiveTask();
+    ReturnCode_t deleteDispatchTask();
+
+    //创建发布端映射 Writer
+    Writer *createWriter (
+        HistoryCache *aHistoryCache,
+        DataWriter *aDataWriter,
+        Topic *topic,
+        const DataWriterQos *qos);
+
+    //删除发布端映射 Writer
+    ReturnCode_t deleteWriter (Writer *aWriter);
+
+    //创建订阅端映射 Reader
+    Reader *createReader (
+        HistoryCache *aHistoryCache,
+        DataReader *aDataReader,
+        Topic *topic,
+        const DataReaderQos *qos);
+
+    //删除订阅端映射 Reader
+    ReturnCode_t deleteReader (Reader *aReader);
+
+    //查找端点，包括Writer和Reader
+    Endpoint *endpointLookup (GUID_t guid);
+
+    bool endpointExist(Endpoint *endpoint);
+
+    //获取内置端点使用的单播地址列表
+    LocatorList_t metatrafficUnicastLocatorList() {
+        return m_metatrafficUnicastLocatorList;
+    }
+
+    //获取内置端点使用的多播地址列表
+    LocatorList_t metatrafficMulticastLocatorList() {
+        return m_metatrafficMulticastLocatorList;
+    }
+
+    //获取默认单播地址列表
+    LocatorList_t defaultUnicastLocatorList() {
+        return m_defaultUnicastLocatorList;
+    }
+
+    //获取默认多播地址列表
+    LocatorList_t defaultMulticastLocatorList() {
+        return m_defaultMulticastLocatorList;
+    }
+
+    //获取协议版本号
+    ProtocolVersion_t protocolVersion() {
+        return m_protocolVersion;
+    }
+
+    //获取厂商编号
+    VendorId_t vendorId() {
+        return m_vendorId;
+    }
+
+    MessageProcessor *getMessageProcessor() {
+        return m_messageProcessor;
+    }
+
+    MessageTransmitter *getMessageTransmitter () {
+        return m_messageTransmitter;
+    }
+
+    //多播过程中查找订阅端映射列表
+    EndpointList_t endpointMulticastLookup(unsigned long multicastAddress, GUID_t writerGUID);
+    
+    //根据主题名计算多播地址
+    ReturnCode_t multicastLocatorGenerate (const char* topicName, Locator_t* multiLocator);
+
+private:
+    //初始化Locator
+    ReturnCode_t locatorInitial(IpList_t defaultIpList);
+
+#ifdef VXWORKS   //移植
+    //启动发送线程/任务
+    int sendTaskStart();
+
+    //启动接收线程/任务
+    int receiveTaskStart();
+
+    //启动分发处理线程/任务
+    int dispatchTaskStart();
+
+#else
+	HANDLE sendTaskStart();
+	HANDLE receiveTaskStart();
+	HANDLE dispatchTaskStart();
+#endif
+
+private:
+    //RTPS协议 版本
+    ProtocolVersion_t m_protocolVersion;
+
+    //生产厂商编号
+    VendorId_t m_vendorId;
+
+    //默认单播地址列表
+    LocatorList_t m_defaultUnicastLocatorList;
+
+    //默认多播地址列表
+    LocatorList_t m_defaultMulticastLocatorList;
+
+    //内置端点使用的单播地址列表
+    LocatorList_t m_metatrafficUnicastLocatorList;
+
+    //内置端点使用的多播地址列表
+    LocatorList_t m_metatrafficMulticastLocatorList;
+
+    //对应的DDS DomainParticipant
+    DomainParticipant* m_relatedDomainParticipant;
+
+    //包含的端点（Writer/Reader）列表
+    EndpointList_t m_endpointList;
+
+    //调度队列
+    RequestScheduler* m_scheduleList;
+
+    //接收缓冲区
+    ReceiveBuffer* m_receiveBuffer;
+
+    //报文处理端
+    MessageProcessor* m_messageProcessor;
+
+    //报文传输端
+    MessageTransmitter *m_messageTransmitter;
+
+    //任务ID
+#ifdef VXWORKS   //移植
+	int m_sendTaskId;
+	int m_receiveTaskId;
+	int m_dispatchTaskId;
+#else
+	HANDLE m_sendTaskId;
+	HANDLE m_receiveTaskId;
+	HANDLE m_dispatchTaskId;
+#endif
+
+    //多播地址与端点映射对应关系
+    EndpointMultiAddrList_t m_endpointMultiAddrList;
+};
+
+#endif

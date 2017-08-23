@@ -1,0 +1,17 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\attemperpage.o
+./release\configparse.o
+./release\combatposition.o
+./release\screen.o
+./release\attemper.o
+./release\roleselect.o
+./release\role.o
+./release\attemperform.o
+./release\moc_mainwindow.o
+./release\moc_attemperpage.o
+./release\moc_roleselect.o
+./release\moc_attemperform.o
+./release\qrc_qtres.o
+);

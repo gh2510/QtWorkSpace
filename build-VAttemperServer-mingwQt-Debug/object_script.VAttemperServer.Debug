@@ -1,0 +1,17 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\attemperpage.o
+./debug\configparse.o
+./debug\combatposition.o
+./debug\screen.o
+./debug\attemper.o
+./debug\roleselect.o
+./debug\role.o
+./debug\attemperform.o
+./debug\moc_mainwindow.o
+./debug\moc_attemperpage.o
+./debug\moc_roleselect.o
+./debug\moc_attemperform.o
+./debug\qrc_qtres.o
+);

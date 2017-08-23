@@ -1,0 +1,20 @@
+//网络监控仪  DDS通信接口协议
+
+
+//[1] 时统信息
+struct TimeStateInfo
+{
+    octet infoFlag;              		//信息单元标志
+    unsigned short infoExtendFlag;      //信息单元扩展标志
+    unsigned short infoIndex;           //信息单元序号
+    unsigned short infoLen;             //信息单元长度
+    octet uchSec;               		//秒
+    octet uchMin;                		//分
+    octet uchHour;              		//时
+    octet uchDay;                		//日
+    octet uchMonth;              		//月
+    octet uchYearHigh;                  //年低字节
+    octet uchYearLow;                   //年高字节
+    octet check;						//
+};
+

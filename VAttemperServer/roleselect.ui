@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RoleSelect</class>
+ <widget class="QWidget" name="RoleSelect">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+	
+	background-color: rgb(170, 85, 255);
+}
+
+
+QPushButton
+{
+	font: 75 14pt &quot;楷体&quot;;
+	
+	
+	background-color: rgb(42, 255, 209);
+}
+
+QTextEdit
+{
+	
+	font: 16pt &quot;楷体&quot;;
+}
+
+QGroupBox
+{
+	
+	font: 75 14pt &quot;楷体&quot;;
+}
+
+QCheckBox
+{
+	
+	font: 11pt &quot;楷体&quot;;
+}</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

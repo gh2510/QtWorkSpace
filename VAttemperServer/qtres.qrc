@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/qrc">
+        <file>res/qtstyles.qss</file>
+        <file>res/image/bkground.png</file>
+        <file>res/image/button.png</file>
+    </qresource>
+</RCC>

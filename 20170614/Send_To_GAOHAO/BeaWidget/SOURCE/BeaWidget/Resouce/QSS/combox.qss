@@ -1,0 +1,12 @@
+QComboBox{border:1px solid gray;}
+QComboBox QAbstractItemView::item{height:40px;}
+
+QComboBox QAbstractItemView::item {height: 40px; }
+           QListView::item { background: white;}
+           QListView::item:hover {background: #BDD7FD;}
+
+QComboBox QAbstractItemView {
+    margin-top: 30px;
+
+}
+                 

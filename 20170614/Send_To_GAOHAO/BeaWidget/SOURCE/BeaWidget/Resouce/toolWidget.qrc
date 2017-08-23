@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/toolWidget">
+        <file>toolWidget/expert.png</file>
+        <file>toolWidget/gongNeng.png</file>
+        <file>toolWidget/jiaSu.png</file>
+        <file>toolWidget/menZhen.png</file>
+        <file>toolWidget/muMa.png</file>
+        <file>toolWidget/qingLi.png</file>
+        <file>toolWidget/repair.png</file>
+        <file>toolWidget/tiJian.png</file>
+        <file>toolWidget/2/gongNeng.png</file>
+        <file>toolWidget/2/jiaSu.png</file>
+        <file>toolWidget/2/louDong.png</file>
+        <file>toolWidget/2/menZhen.png</file>
+        <file>toolWidget/2/muMa.png</file>
+        <file>toolWidget/2/qingLi.png</file>
+        <file>toolWidget/2/ruanJian.png</file>
+        <file>toolWidget/2/tiJian.png</file>
+        <file>toolWidget/2/xiTong.png</file>
+    </qresource>
+</RCC>

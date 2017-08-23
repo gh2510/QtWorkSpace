@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AttemperForm</class>
+ <widget class="QWidget" name="AttemperForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+	
+	
+	background-color: rgb(234, 196, 255);
+}
+
+QLabel
+{
+	
+	font: 16pt &quot;楷体&quot;;
+}
+
+QComboBox
+{
+	font: 16pt &quot;楷体&quot;;
+}
+
+QPushButton
+{
+	font: 16pt &quot;楷体&quot;;
+}</string>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,6 @@
+struct myData
+{
+	short x;
+	short y;
+	string color;
+};
