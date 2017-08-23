@@ -1,4 +1,4 @@
-#include "roleselect.h"
+﻿#include "roleselect.h"
 #include "ui_roleselect.h"
 #include "mainwindow.h"
 
@@ -52,7 +52,7 @@ void RoleSelect::InitWidget(ConfigParse &configParse)
     // 设置整个窗口的layout，窗口分为三部分，标题栏、角色选择区以及退出按钮
     QVBoxLayout *mainLayout = new QVBoxLayout();
     // 显示标题栏
-    QLabel *label = new QLabel("服务化调度系统客户端");
+    QLabel *label = new QLabel(tr("服务化调度系统客户端"));
     label->setAlignment(Qt::AlignCenter);
     label->setFixedWidth(widgetWidth); //目前设标题的宽度为整个窗口的1/2
     label->setFixedHeight(70);

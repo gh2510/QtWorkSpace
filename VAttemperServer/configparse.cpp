@@ -27,7 +27,7 @@ QString ConfigParse::pasreConfigFile(QString xmlPath)
     QFile file(xmlPath);
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-       ret = "未找到配置文件，请确定final.xml文件在同目录下";
+       ret = "未找到配置文件，请确定final.xml文件存在";
        return ret;
      }
      else
@@ -44,7 +44,7 @@ QString ConfigParse::pasreConfigFile(QString xmlPath)
     QDomNode combatPositionNode = root.firstChild();
     if(combatPositionNode.isNull()) // 未找到站位信息
     {
-        ret = "配置文件中未获得站位信息，请核实！";
+        ret = "配置文件中未获得站位信息，请核实";
         return ret;
     }
 

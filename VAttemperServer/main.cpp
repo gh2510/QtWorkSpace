@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include <QApplication>
 #include "roleselect.h"
 #include <QString>
@@ -18,8 +18,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
+    QTextCodec *codec = QTextCodec::codecForName("gbk"); // UTF-8
     QTextCodec::setCodecForTr(codec);
+
     QTextCodec::setCodecForLocale(codec);
     QTextCodec::setCodecForCStrings(codec);
 

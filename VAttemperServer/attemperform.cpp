@@ -1,4 +1,4 @@
-#include "attemperform.h"
+﻿#include "attemperform.h"
 #include "roleselect.h"
 #include "ui_attemperform.h"
 #include <QDesktopWidget>

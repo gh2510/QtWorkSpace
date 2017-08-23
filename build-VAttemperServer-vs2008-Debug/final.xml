@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Node>
+     <CombatPosition cpId = "1" cpName="战位1">
+			<Role roleId="11" roleName="角色1-1" description="该角色的作用是1">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "1" pageName = "页面1"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "1" pageName = "页面2"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "2" pageName = "页面3"/>
+			</Role>
+			<Role roleId="12" roleName="角色1-2" description="该角色的作用是2">
+					<Screen screenId = "1" vmIP="193.1.103.4" width="1024" height="768" pageId = "4" pageName = "页面4"/>
+					<Screen screenId = "2" vmIP="193.1.103.5" width="1024" height="768" pageId = "5" pageName = "页面5"/>
+					<Screen screenId = "3" vmIP="193.1.103.6" width="1024" height="768" pageId = "6" pageName = "页面6"/>
+			</Role>
+			<Role roleId="13" roleName="角色1-3" description="该角色的作用是3">
+					<Screen screenId = "1" vmIP="193.1.103.7" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.8" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.9" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+			<Role roleId="14" roleName="角色1-4" description="该角色的作用是4">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+			<Role roleId="24" roleName="角色1-6" description="该角色的作用是9">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+	</CombatPosition>
+	<CombatPosition cpId = "1" cpName="战位2">
+			<Role roleId="21" roleName="角色2-1" description="该角色的作用是5">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "1" pageName = "页面1"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "1" pageName = "页面2"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "2" pageName = "页面3"/>
+			</Role>
+			<Role roleId="22" roleName="角色2-6" description="该角色的作用是6">
+					<Screen screenId = "1" vmIP="193.1.103.4" width="1024" height="768" pageId = "4" pageName = "页面4"/>
+					<Screen screenId = "2" vmIP="193.1.103.5" width="1024" height="768" pageId = "5" pageName = "页面5"/>
+					<Screen screenId = "3" vmIP="193.1.103.6" width="1024" height="768" pageId = "6" pageName = "页面6"/>
+			</Role>
+			<Role roleId="23" roleName="角色2-3" description="该角色的作用是7">
+					<Screen screenId = "1" vmIP="193.1.103.7" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.8" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.9" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+			<Role roleId="24" roleName="角色2-4" description="该角色的作用是9">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+	</CombatPosition>
+	<CombatPosition cpId = "3" cpName="战位3">
+			<Role roleId="31" roleName="角色3-1" description="该角色的作用是35">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "1" pageName = "页面1"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "1" pageName = "页面2"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "2" pageName = "页面3"/>
+			</Role>
+			<Role roleId="32" roleName="角色3-6" description="该角色的作用是36">
+					<Screen screenId = "1" vmIP="193.1.103.4" width="1024" height="768" pageId = "4" pageName = "页面4"/>
+					<Screen screenId = "2" vmIP="193.1.103.5" width="1024" height="768" pageId = "5" pageName = "页面5"/>
+					<Screen screenId = "3" vmIP="193.1.103.6" width="1024" height="768" pageId = "6" pageName = "页面6"/>
+			</Role>
+			<Role roleId="33" roleName="角色3-3" description="该角色的作用是37">
+					<Screen screenId = "1" vmIP="193.1.103.7" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.8" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.9" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+			<Role roleId="34" roleName="角色3-4" description="该角色的作用是39">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+	</CombatPosition>
+	<CombatPosition cpId = "4" cpName="战位4">
+			<Role roleId="41" roleName="角色4-1" description="该角色的作用是5">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "1" pageName = "页面1"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "1" pageName = "页面2"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "2" pageName = "页面3"/>
+			</Role>
+			<Role roleId="42" roleName="角色4-6" description="该角色的作用是6">
+					<Screen screenId = "1" vmIP="193.1.103.4" width="1024" height="768" pageId = "4" pageName = "页面4"/>
+					<Screen screenId = "2" vmIP="193.1.103.5" width="1024" height="768" pageId = "5" pageName = "页面5"/>
+					<Screen screenId = "3" vmIP="193.1.103.6" width="1024" height="768" pageId = "6" pageName = "页面6"/>
+			</Role>
+			<Role roleId="43" roleName="角色4-3" description="该角色的作用是7">
+					<Screen screenId = "1" vmIP="193.1.103.7" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.8" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.9" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+			<Role roleId="44" roleName="角色4-4" description="该角色的作用是9">
+					<Screen screenId = "1" vmIP="193.1.103.1" width="1024" height="768" pageId = "7" pageName = "页面7"/>
+					<Screen screenId = "2" vmIP="193.1.103.2" width="1024" height="768" pageId = "8" pageName = "页面8"/>
+					<Screen screenId = "3" vmIP="193.1.103.3" width="1024" height="768" pageId = "9" pageName = "页面9"/>
+			</Role>
+	</CombatPosition>
+</Node>

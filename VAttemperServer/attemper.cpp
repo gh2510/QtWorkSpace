@@ -1,4 +1,4 @@
-#include "attemper.h"
+﻿#include "attemper.h"
 #include "mainwindow.h"
 
 Attemper::Attemper()
