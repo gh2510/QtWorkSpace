@@ -1,7 +1,7 @@
 #include "configparse.h"
 
 /*
- *æ„é€ å‡½æ•°
+ *¹¹Ôìº¯Êı
  *
  */
 ConfigParse::ConfigParse()
@@ -13,12 +13,12 @@ ConfigParse::ConfigParse()
 }
 
 /*
- *å‡½æ•°åç§°ï¼špasreConfigFile
- *å‡½æ•°æè¿°ï¼šè¯»å–xmlä¸­æŒ‡å®šçš„xmlæ–‡ä»¶ï¼Œè¿›è¡Œè§£æï¼Œå°†ç»“æœå­˜å…¥ç»“æ„ä½“ä¸­
- *å‚æ•°è¾“å…¥ï¼š
- *        xmlPath: xmlæ–‡ä»¶çš„è·¯å¾„
- *å‚æ•°è¾“å‡ºï¼š
- *      QString:è‹¥è§£ææ­£å¸¸è¿”å›â€œâ€ï¼Œå¦åˆ™è¿”å›é”™è¯¯ä¿¡æ¯
+ *º¯ÊıÃû³Æ£ºpasreConfigFile
+ *º¯ÊıÃèÊö£º¶ÁÈ¡xmlÖĞÖ¸¶¨µÄxmlÎÄ¼ş£¬½øĞĞ½âÎö£¬½«½á¹û´æÈë½á¹¹ÌåÖĞ
+ *²ÎÊıÊäÈë£º
+ *        xmlPath: xmlÎÄ¼şµÄÂ·¾¶
+ *²ÎÊıÊä³ö£º
+ *      QString:Èô½âÎöÕı³£·µ»Ø¡°¡±£¬·ñÔò·µ»Ø´íÎóĞÅÏ¢
  */
 QString ConfigParse::pasreConfigFile(QString xmlPath)
 {
@@ -27,24 +27,24 @@ QString ConfigParse::pasreConfigFile(QString xmlPath)
     QFile file(xmlPath);
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-       ret = "æœªæ‰¾åˆ°é…ç½®æ–‡ä»¶ï¼Œè¯·ç¡®å®šfinal.xmlæ–‡ä»¶å­˜åœ¨";
+       ret = "Î´ÕÒµ½ÅäÖÃÎÄ¼ş£¬ÇëÈ·¶¨final.xmlÎÄ¼ş´æÔÚ";
        return ret;
      }
      else
      {
         if(!document.setContent(&file))
         {
-            ret = "åŠ è½½æ–‡ä»¶å¤±è´¥";
+            ret = "¼ÓÔØÎÄ¼şÊ§°Ü";
             return ret;
          }
          file.close();
       }
-    // è·å¾—æ ¹ç›®å½•ä¿¡æ¯
+    // »ñµÃ¸ùÄ¿Â¼ĞÅÏ¢
     QDomElement root=document.documentElement();
     QDomNode combatPositionNode = root.firstChild();
-    if(combatPositionNode.isNull()) // æœªæ‰¾åˆ°ç«™ä½ä¿¡æ¯
+    if(combatPositionNode.isNull()) // Î´ÕÒµ½Õ¾Î»ĞÅÏ¢
     {
-        ret = "é…ç½®æ–‡ä»¶ä¸­æœªè·å¾—ç«™ä½ä¿¡æ¯ï¼Œè¯·æ ¸å®";
+        ret = "ÅäÖÃÎÄ¼şÖĞÎ´»ñµÃÕ¾Î»ĞÅÏ¢£¬ÇëºËÊµ";
         return ret;
     }
 
@@ -59,13 +59,13 @@ QString ConfigParse::pasreConfigFile(QString xmlPath)
         QDomElement combatPositionElement = combatPositionNode.toElement();
         if(!combatPositionElement.isNull())
         {
-            // è·å¾—ç«™ä½ä»£å·å’Œåç§°
+            // »ñµÃÕ¾Î»´úºÅºÍÃû³Æ
             strtemp = combatPositionElement.attribute("cpId");
             combatPosition.estradeId = strtemp.toInt();
             strtemp = combatPositionElement.attribute("cpName");
             combatPosition.estradeName = strtemp;
 
-            // è·å¾—è§’è‰²ä¿¡æ¯
+            // »ñµÃ½ÇÉ«ĞÅÏ¢
             QDomNode roleNode = combatPositionElement.firstChild();
             while(!roleNode.isNull())
             {
@@ -78,7 +78,7 @@ QString ConfigParse::pasreConfigFile(QString xmlPath)
                 role.setDescription(strtemp);
                 combatPosition.roleList.push_back(role);
 
-                // è·å¾—å±å¹•ä¿¡æ¯
+                // »ñµÃÆÁÄ»ĞÅÏ¢
                 QDomNode screenNode = roleElement.firstChild();
                 while(!screenNode.isNull())
                 {
@@ -93,7 +93,7 @@ QString ConfigParse::pasreConfigFile(QString xmlPath)
                     screen.vmIp = strtemp;
                     role.AddScreen(screen);
 
-                    // ç”Ÿæˆè§„åˆ™ä¿¡æ¯
+                    // Éú³É¹æÔòĞÅÏ¢
                     strtemp = screenElement.attribute("pageId");
                     int pageId = strtemp.toInt();
                     attemperRule.roleId = role.getRoleId();
@@ -114,11 +114,11 @@ QString ConfigParse::pasreConfigFile(QString xmlPath)
 }
 
 /*
- * å‡½æ•°åç§°ï¼šgetCombatPositionNum
- * å‡½æ•°åŠŸèƒ½ï¼šæ ¹æ®é…ç½®æ–‡ä»¶è¿”å›å½“å‰ç³»ç»Ÿå†…ç«™ä½çš„æ•°é‡
- * å‚æ•°ï¼šæ— 
- * è¿”å›å€¼ï¼š
- *       å½“å‰ç³»ç»Ÿå†…ç«™ä½çš„æ•°é‡
+ * º¯ÊıÃû³Æ£ºgetCombatPositionNum
+ * º¯Êı¹¦ÄÜ£º¸ù¾İÅäÖÃÎÄ¼ş·µ»Øµ±Ç°ÏµÍ³ÄÚÕ¾Î»µÄÊıÁ¿
+ * ²ÎÊı£ºÎŞ
+ * ·µ»ØÖµ£º
+ *       µ±Ç°ÏµÍ³ÄÚÕ¾Î»µÄÊıÁ¿
  *
  *
  */
@@ -128,11 +128,11 @@ int ConfigParse::getCombatPositionNum()
 }
 
 /*
- * å‡½æ•°åç§°ï¼šgetMaxRoleNum
- * å‡½æ•°åŠŸèƒ½ï¼šæ ¹æ®é…ç½®æ–‡ä»¶è¿”å›æˆ˜ä½ä¸­æœ€å¤§è§’è‰²çš„æ•°é‡
- * å‚æ•°ï¼šæ— 
- * è¿”å›å€¼ï¼š
- *       æˆ˜ä½ä¸­æœ€å¤§è§’è‰²çš„æ•°é‡
+ * º¯ÊıÃû³Æ£ºgetMaxRoleNum
+ * º¯Êı¹¦ÄÜ£º¸ù¾İÅäÖÃÎÄ¼ş·µ»ØÕ½Î»ÖĞ×î´ó½ÇÉ«µÄÊıÁ¿
+ * ²ÎÊı£ºÎŞ
+ * ·µ»ØÖµ£º
+ *       Õ½Î»ÖĞ×î´ó½ÇÉ«µÄÊıÁ¿
  *
  *
  */
@@ -147,11 +147,11 @@ int ConfigParse::getMaxRoleNum()
 }
 
 /*
- * å‡½æ•°åç§°ï¼šgetCombatPositionList
- * å‡½æ•°åŠŸèƒ½ï¼šè·å¾—æ‰€æœ‰ç«™ä½çš„ä¿¡æ¯
- * å‚æ•°ï¼šæ— 
- * è¿”å›å€¼ï¼š
- *       æ‰€æœ‰ç«™ä½çš„ä¿¡æ¯
+ * º¯ÊıÃû³Æ£ºgetCombatPositionList
+ * º¯Êı¹¦ÄÜ£º»ñµÃËùÓĞÕ¾Î»µÄĞÅÏ¢
+ * ²ÎÊı£ºÎŞ
+ * ·µ»ØÖµ£º
+ *       ËùÓĞÕ¾Î»µÄĞÅÏ¢
  *
  *
  */
@@ -161,11 +161,11 @@ QList<CombatPosition> ConfigParse::getCombatPositionList()
 }
 
 /*
- * å‡½æ•°åç§°ï¼šgetAttemperRules
- * å‡½æ•°åŠŸèƒ½ï¼šè·å¾—æ‰€æœ‰æ˜ å°„è§„åˆ™ä¿¡æ¯
- * å‚æ•°ï¼šæ— 
- * è¿”å›å€¼ï¼š
- *       æ‰€æœ‰è§„åˆ™çš„ä¿¡æ¯
+ * º¯ÊıÃû³Æ£ºgetAttemperRules
+ * º¯Êı¹¦ÄÜ£º»ñµÃËùÓĞÓ³Éä¹æÔòĞÅÏ¢
+ * ²ÎÊı£ºÎŞ
+ * ·µ»ØÖµ£º
+ *       ËùÓĞ¹æÔòµÄĞÅÏ¢
  *
  *
  */

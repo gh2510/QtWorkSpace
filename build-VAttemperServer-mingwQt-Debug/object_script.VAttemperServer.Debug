@@ -9,6 +9,10 @@ INPUT(
 ./debug\roleselect.o
 ./debug\role.o
 ./debug\attemperform.o
+./debug\IDL_DataWriter.o
+./debug\IDL_DataReader.o
+./debug\IDL_attempter.o
+./debug\ddspublich.o
 ./debug\moc_mainwindow.o
 ./debug\moc_attemperpage.o
 ./debug\moc_roleselect.o

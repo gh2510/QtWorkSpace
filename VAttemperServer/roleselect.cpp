@@ -1,4 +1,4 @@
-ï»¿#include "roleselect.h"
+#include "roleselect.h"
 #include "ui_roleselect.h"
 #include "mainwindow.h"
 
@@ -16,51 +16,51 @@ RoleSelect::~RoleSelect()
 }
 
 /*
- * å‡½æ•°åç§°ï¼šInitWidget
- * å‡½æ•°åŠŸèƒ½ï¼šè´Ÿè´£æˆ˜ä½ä¿¡æ¯ï¼ŒåŠ¨æ€ç”Ÿæˆç•Œé¢ï¼ŒåŒ…æ‹¬ç«™ä½å’Œè§’è‰²
- * å‚æ•°ï¼š
- *     combatPositionï¼šç«™ä½ä¿¡æ¯ã€‚
- * è¿”å›å€¼ï¼š
- *     æ— ã€‚
+ * º¯ÊıÃû³Æ£ºInitWidget
+ * º¯Êı¹¦ÄÜ£º¸ºÔğÕ½Î»ĞÅÏ¢£¬¶¯Ì¬Éú³É½çÃæ£¬°üÀ¨Õ¾Î»ºÍ½ÇÉ«
+ * ²ÎÊı£º
+ *     combatPosition£ºÕ¾Î»ĞÅÏ¢¡£
+ * ·µ»ØÖµ£º
+ *     ÎŞ¡£
  *
  *
  */
 void RoleSelect::InitWidget(ConfigParse &configParse)
 {
     setWindowFlags(Qt::FramelessWindowHint);
-    // æ ¹æ®å½“å‰æ•´ä¸ªç³»ç»Ÿæˆ˜ä½çš„æ•°é‡ï¼Œä»¥åŠæœ€å¤§è§’è‰²çš„æ•°é‡ï¼ŒåŠ¨æ€ç”Ÿæˆçª—å£å®½åº¦å’Œé«˜åº¦
+    // ¸ù¾İµ±Ç°Õû¸öÏµÍ³Õ½Î»µÄÊıÁ¿£¬ÒÔ¼°×î´ó½ÇÉ«µÄÊıÁ¿£¬¶¯Ì¬Éú³É´°¿Ú¿í¶ÈºÍ¸ß¶È
     int combatPositionNum = configParse.getCombatPositionNum();
     int maxRoleNum = configParse.getMaxRoleNum();
 
     if(combatPositionNum == 0)
     {
-        QMessageBox::information(this,tr("é”™è¯¯æç¤º"),tr("é…ç½®æ–‡ä»¶ä¸­æœªè·å¾—æˆ˜ä½ä¿¡æ¯ï¼Œè¯·æ ¸å®ï¼"),QMessageBox::Ok);
-        exit(0); // ç›´æ¥é€€å‡ºçš„ç¨‹åº
+        QMessageBox::information(this,tr("´íÎóÌáÊ¾"),tr("ÅäÖÃÎÄ¼şÖĞÎ´»ñµÃÕ½Î»ĞÅÏ¢£¬ÇëºËÊµ£¡"),QMessageBox::Ok);
+        exit(0); // Ö±½ÓÍË³öµÄ³ÌĞò
     }
     if(maxRoleNum == 0)
     {
-       QMessageBox::information(this,tr("é”™è¯¯æç¤º"),tr("é…ç½®æ–‡ä»¶ä¸­æœªè·å¾—è§’è‰²ä¿¡æ¯ï¼Œè¯·æ ¸å®ï¼"),QMessageBox::Ok);
-        exit(0); // ç›´æ¥é€€å‡ºçš„ç¨‹åº
+       QMessageBox::information(this,tr("´íÎóÌáÊ¾"),tr("ÅäÖÃÎÄ¼şÖĞÎ´»ñµÃ½ÇÉ«ĞÅÏ¢£¬ÇëºËÊµ£¡"),QMessageBox::Ok);
+        exit(0); // Ö±½ÓÍË³öµÄ³ÌĞò
     }
 
-    // ç”Ÿæˆå®½åº¦å’Œé«˜åº¦ï¼Œç›®å‰æš‚å®šæ¯ä¸ªç«™ä½å æœ‰çš„å®½åº¦ä¸º 50ï¼Œä¸¤æ¬¡å®½åº¦é¢„ç•™ä¸º 60ã€‚é«˜åº¦æ¯ä¸ªè§’è‰²å æœ‰20ï¼Œé—´éš”ä¸º10ï¼Œæ ‡é¢˜é«˜åº¦ä¸º0ï¼Œä¸Šä¸‹ç©ºé—´ä¸º10
+    // Éú³É¿í¶ÈºÍ¸ß¶È£¬Ä¿Ç°Ôİ¶¨Ã¿¸öÕ¾Î»Õ¼ÓĞµÄ¿í¶ÈÎª 50£¬Á½´Î¿í¶ÈÔ¤ÁôÎª 60¡£¸ß¶ÈÃ¿¸ö½ÇÉ«Õ¼ÓĞ20£¬¼ä¸ôÎª10£¬±êÌâ¸ß¶ÈÎª0£¬ÉÏÏÂ¿Õ¼äÎª10
     int widgetWidth = 60*2 + combatPositionNum * 120;
     int widgetHeight = 50*2 + maxRoleNum * 40 + (maxRoleNum-1) * 30 + 40;
 
     setFixedSize(widgetWidth,widgetHeight);
 
-    // è®¾ç½®æ•´ä¸ªçª—å£çš„layoutï¼Œçª—å£åˆ†ä¸ºä¸‰éƒ¨åˆ†ï¼Œæ ‡é¢˜æ ã€è§’è‰²é€‰æ‹©åŒºä»¥åŠé€€å‡ºæŒ‰é’®
+    // ÉèÖÃÕû¸ö´°¿ÚµÄlayout£¬´°¿Ú·ÖÎªÈı²¿·Ö£¬±êÌâÀ¸¡¢½ÇÉ«Ñ¡ÔñÇøÒÔ¼°ÍË³ö°´Å¥
     QVBoxLayout *mainLayout = new QVBoxLayout();
-    // æ˜¾ç¤ºæ ‡é¢˜æ 
-    QLabel *label = new QLabel(tr("æœåŠ¡åŒ–è°ƒåº¦ç³»ç»Ÿå®¢æˆ·ç«¯"));
+    // ÏÔÊ¾±êÌâÀ¸
+    QLabel *label = new QLabel(tr("·şÎñ»¯µ÷¶ÈÏµÍ³¿Í»§¶Ë"));
     label->setAlignment(Qt::AlignCenter);
-    label->setFixedWidth(widgetWidth); //ç›®å‰è®¾æ ‡é¢˜çš„å®½åº¦ä¸ºæ•´ä¸ªçª—å£çš„1/2
+    label->setFixedWidth(widgetWidth); //Ä¿Ç°Éè±êÌâµÄ¿í¶ÈÎªÕû¸ö´°¿ÚµÄ1/2
     label->setFixedHeight(70);
     label->setStyleSheet("font-size: 28px; padding: 0 10; background-color: rgb(163, 82, 255);");
-    mainLayout->addWidget(label); // åŠ å…¥åˆ°æ•´ä½“å¸ƒå±€ä¸­
+    mainLayout->addWidget(label); // ¼ÓÈëµ½ÕûÌå²¼¾ÖÖĞ
 
-    // æ¯ä¸ªæˆ˜ä½å¯¹åº”ä¸€ä¸ªgroupboxï¼Œæ˜¾ç¤ºå„ä¸ªgroupBoxåŠä¸‹é¢çš„è§’è‰²ä¿¡æ¯
-    QHBoxLayout *cplayout = new QHBoxLayout;  //åˆ›å»ºç«™ä½çš„å¸ƒå±€å¯¹è±¡
+    // Ã¿¸öÕ½Î»¶ÔÓ¦Ò»¸ögroupbox£¬ÏÔÊ¾¸÷¸ögroupBox¼°ÏÂÃæµÄ½ÇÉ«ĞÅÏ¢
+    QHBoxLayout *cplayout = new QHBoxLayout;  //´´½¨Õ¾Î»µÄ²¼¾Ö¶ÔÏó
     checkboxGroup = new QButtonGroup();
     for(int i=0;i<configParse.getCombatPositionList().count();i++)
     {
@@ -69,10 +69,10 @@ void RoleSelect::InitWidget(ConfigParse &configParse)
         QGroupBox *groupBox = new QGroupBox(combatPosition.estradeName);
         cplayout->addWidget(groupBox);
 
-        // ä¸ºæ¯ä¸ªç«™ä½ä¸‹åˆ›å»ºè§’è‰²
-        QVBoxLayout *roleLayout = new QVBoxLayout(); // æ¯ä¸ªç«™ä½å†…éƒ¨çš„å¸ƒå±€ä¿¡æ¯
+        // ÎªÃ¿¸öÕ¾Î»ÏÂ´´½¨½ÇÉ«
+        QVBoxLayout *roleLayout = new QVBoxLayout(); // Ã¿¸öÕ¾Î»ÄÚ²¿µÄ²¼¾ÖĞÅÏ¢
         QList<Role> roleList = combatPosition.roleList;
-        for(int j=0;j<roleList.count();j++) // åˆ›å»ºè§’è‰²å¯¹åº”çš„å¤é€‰æ¡†
+        for(int j=0;j<roleList.count();j++) // ´´½¨½ÇÉ«¶ÔÓ¦µÄ¸´Ñ¡¿ò
         {
             Role role = roleList.at(j);
             QCheckBox *roleCheck = new QCheckBox(role.getRoleName());
@@ -82,9 +82,9 @@ void RoleSelect::InitWidget(ConfigParse &configParse)
 
             connect(roleCheck, SIGNAL(clicked(bool)), this, SLOT(checkbox_click(bool)));
             roleLayout->addWidget(roleCheck);
-            // å°†æ‰€æœ‰å¤é€‰æ¡†è®¾ç½®ä¸ºå•é€‰
+            // ½«ËùÓĞ¸´Ñ¡¿òÉèÖÃÎªµ¥Ñ¡
             checkboxGroup->addButton(roleCheck);
-            // å­˜å‚¨å½“å‰å¤é€‰ä¿¡æ¯
+            // ´æ´¢µ±Ç°¸´Ñ¡ĞÅÏ¢
             CombatPosition *comTemp = new CombatPosition(combatPosition);
             checkBoxInfo.combatPosition = comTemp;
             checkBoxInfo.checkbox = roleCheck;
@@ -94,28 +94,28 @@ void RoleSelect::InitWidget(ConfigParse &configParse)
 
         groupBox->setLayout(roleLayout);
     }
-    mainLayout->addLayout(cplayout); // åŠ å…¥åˆ°æ•´ä½“å¸ƒå±€ä¸­
+    mainLayout->addLayout(cplayout); // ¼ÓÈëµ½ÕûÌå²¼¾ÖÖĞ
 
-    // è¯´æ˜ä¿¡æ¯
+    // ËµÃ÷ĞÅÏ¢
     descriptionedit = new QTextEdit();
     descriptionedit->setFixedHeight(70);
     descriptionedit->setEnabled(false);
     descriptionedit->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     mainLayout->addWidget(descriptionedit);
-    // æ“ä½œæŒ‰é’®
-    QHBoxLayout *btnlayout = new QHBoxLayout;  //åˆ›å»ºæŒ‰é’®çš„å¸ƒå±€å¯¹è±¡
-    okButton = new QPushButton("ç¡®å®š",this);
+    // ²Ù×÷°´Å¥
+    QHBoxLayout *btnlayout = new QHBoxLayout;  //´´½¨°´Å¥µÄ²¼¾Ö¶ÔÏó
+    okButton = new QPushButton("È·¶¨",this);
     okButton->setFixedWidth(120);
     okButton->setFixedHeight(30);
-    okButton->setEnabled(false); // é»˜è®¤ä¸å¯è¢«ç¼–è¾‘
+    okButton->setEnabled(false); // Ä¬ÈÏ²»¿É±»±à¼­
     btnlayout->addWidget(okButton);
-    cancelButton = new QPushButton("é€€å‡º",this);
+    cancelButton = new QPushButton("ÍË³ö",this);
     cancelButton->setFixedWidth(120);
     cancelButton->setFixedHeight(30);
     btnlayout->addWidget(cancelButton);
-    mainLayout->addLayout(btnlayout); // åŠ å…¥åˆ°æ•´ä½“å¸ƒå±€ä¸­
+    mainLayout->addLayout(btnlayout); // ¼ÓÈëµ½ÕûÌå²¼¾ÖÖĞ
 
-    // å…³è”äº‹ä»¶
+    // ¹ØÁªÊÂ¼ş
     connect(okButton, SIGNAL(clicked()), this, SLOT(okbtn_click()));
     connect(cancelButton, SIGNAL(clicked()), this, SLOT(cancelbtn_click()));
 
@@ -125,18 +125,18 @@ void RoleSelect::InitWidget(ConfigParse &configParse)
 }
 
 /*
- * å‡½æ•°åç§°ï¼šUpdateWidget
- * å‡½æ•°åŠŸèƒ½ï¼šå½“è¿”å›ä¸Šä¸€çº§æ—¶ï¼Œæ ¹æ®å½“å‰çš„è§’è‰²ä¿¡æ¯æ›´æ–°æ˜¾ç¤ºçª—å£
- * å‚æ•°ï¼š
- *     æ— 
- * è¿”å›å€¼ï¼š
- *     æ— 
+ * º¯ÊıÃû³Æ£ºUpdateWidget
+ * º¯Êı¹¦ÄÜ£ºµ±·µ»ØÉÏÒ»¼¶Ê±£¬¸ù¾İµ±Ç°µÄ½ÇÉ«ĞÅÏ¢¸üĞÂÏÔÊ¾´°¿Ú
+ * ²ÎÊı£º
+ *     ÎŞ
+ * ·µ»ØÖµ£º
+ *     ÎŞ
  *
  *
  */
 void RoleSelect::UpdateWidget()
 {
-    // è·å¾—å½“å‰å¤é€‰å¯¹åº”çš„è§’è‰²å¯¹è±¡
+    // »ñµÃµ±Ç°¸´Ñ¡¶ÔÓ¦µÄ½ÇÉ«¶ÔÏó
     for(int i=0;i<checkInfoList.count();i++)
     {
         CheckBoxInfo checkBoxInfo = checkInfoList.at(i);
@@ -152,12 +152,12 @@ void RoleSelect::UpdateWidget()
 
 /*
  *
- * å‡½æ•°åç§°ï¼šcheckbox_click
- * å‡½æ•°åŠŸèƒ½ï¼šç‚¹å‡»è§’è‰²å¤é€‰æ¡†å“åº”äº‹ä»¶ï¼Œæ˜¾ç¤ºè§’è‰²çš„æè¿°ä¿¡æ¯
- * å‚æ•°ï¼š
- *      checkedï¼šå¦‚æœæ˜¯è¢«é€‰ä¸­åˆ™å€¼ä¸ºtrueï¼Œå¦åˆ™ä¸ºfalseã€‚
- * è¿”å›å€¼ï¼š
- *      æ— 
+ * º¯ÊıÃû³Æ£ºcheckbox_click
+ * º¯Êı¹¦ÄÜ£ºµã»÷½ÇÉ«¸´Ñ¡¿òÏìÓ¦ÊÂ¼ş£¬ÏÔÊ¾½ÇÉ«µÄÃèÊöĞÅÏ¢
+ * ²ÎÊı£º
+ *      checked£ºÈç¹ûÊÇ±»Ñ¡ÖĞÔòÖµÎªtrue£¬·ñÔòÎªfalse¡£
+ * ·µ»ØÖµ£º
+ *      ÎŞ
  *
  *
  */
@@ -166,14 +166,14 @@ void RoleSelect::checkbox_click(bool checked)
     QString str = "";
     if(checked == true)
     {
-        // è·å¾—å½“å‰å¤é€‰å¯¹åº”çš„è§’è‰²å¯¹è±¡
+        // »ñµÃµ±Ç°¸´Ñ¡¶ÔÓ¦µÄ½ÇÉ«¶ÔÏó
         for(int i=0;i<checkInfoList.count();i++)
         {
             CheckBoxInfo checkBoxInfo = checkInfoList.at(i);
             if(checkBoxInfo.checkbox->checkState() == Qt::Checked)
             {
                 str = checkBoxInfo.combatPosition->getCurRole().getDescription();
-                // è·å–å½“å‰ä¿¡æ¯ï¼Œç»™ç«™ä½å¯¹è±¡èµ‹å€¼ä¿¡æ¯
+                // »ñÈ¡µ±Ç°ĞÅÏ¢£¬¸øÕ¾Î»¶ÔÏó¸³ÖµĞÅÏ¢
                 MainWindow::currentCombatPosition = *checkBoxInfo.combatPosition;
 
                 if(okButton->isEnabled() == false)
@@ -186,21 +186,21 @@ void RoleSelect::checkbox_click(bool checked)
 }
 
 /*
- * å‡½æ•°åç§°ï¼šokbtn_click
- * å‡½æ•°åŠŸèƒ½ï¼šç‚¹å‡»ç¡®å®šæŒ‰é’®ï¼Œä»å½“å‰çª—å£è¿›å…¥ç¬¬äºŒçº§çª—å£
- * å‚æ•°ï¼š
- *      æ— 
- * è¿”å›å€¼ï¼š
- *      æ— 
+ * º¯ÊıÃû³Æ£ºokbtn_click
+ * º¯Êı¹¦ÄÜ£ºµã»÷È·¶¨°´Å¥£¬´Óµ±Ç°´°¿Ú½øÈëµÚ¶ş¼¶´°¿Ú
+ * ²ÎÊı£º
+ *      ÎŞ
+ * ·µ»ØÖµ£º
+ *      ÎŞ
  *
  *
  *
  */
 void RoleSelect::okbtn_click()
 {
-    // éšè—å½“å‰çš„çª—å£
+    // Òş²Øµ±Ç°µÄ´°¿Ú
     this->hide();
-    // åˆå§‹åŒ–è°ƒåº¦çª—å£
+    // ³õÊ¼»¯µ÷¶È´°¿Ú
     if(attemperForm == NULL)
     {
         attemperForm = new AttemperForm(this);
@@ -208,8 +208,12 @@ void RoleSelect::okbtn_click()
     }
     attemperForm->UpdateForm();
     attemperForm->show();
-    // è¿›è¡Œè°ƒåº¦åˆ‡æ¢
-    MainWindow::attmper->ChangeRole(MainWindow::currentCombatPosition);
+    // ½øĞĞµ÷¶ÈÇĞ»»
+    QString ret = MainWindow::attmper->ChangeRole(MainWindow::currentCombatPosition);
+    if(ret != "")
+    {
+        QMessageBox::information(this,tr("´íÎóÌáÊ¾"),ret,QMessageBox::Ok);
+    }
 }
 
 void RoleSelect::cancelbtn_click()

@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include "attemper.h"
 #include "combatposition.h"
+#include "ddspublich.h"
+#include <QMessageBox>
 
 namespace Ui {
 class MainWindow;
@@ -16,10 +18,12 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    static void WarnMessage(QString errInfo); // µ¯³ö¸æ¾¯¶Ô»°¿ò
     
 public:
-    static CombatPosition currentCombatPosition; // æœ¬æœºçš„ç«™ä½ä¿¡æ¯
-    static Attemper *attmper; // è°ƒåº¦å¼•æ“
+    static CombatPosition currentCombatPosition; // ±¾»úµÄÕ¾Î»ĞÅÏ¢
+    static Attemper *attmper; // µ÷¶ÈÒıÇæ
+    static DDSPublich ddsPublic; // DDS·¢²¼¶Ë
 private:
     Ui::MainWindow *ui;
 };

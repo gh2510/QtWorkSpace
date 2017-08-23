@@ -1,4 +1,4 @@
-ï»¿#include "attemper.h"
+#include "attemper.h"
 #include "mainwindow.h"
 
 Attemper::Attemper()
@@ -8,86 +8,96 @@ Attemper::Attemper()
 
 /*
  *
- *å‡½æ•°åŠŸèƒ½ï¼šæ¥æ”¶è°ƒåº¦ä¿¡æ¯å¹¶å‘è¿œç¨‹è™šæ‹Ÿæœºä¸Šçš„è°ƒåº¦å®¢æˆ·ç«¯å‘é€è°ƒåº¦æŒ‡ä»¤
- * å‚æ•°
- *    vm_IPï¼š  å½“å‰æ˜¾ç¤ºçš„è™šæ‹ŸæœºIPåœ°å€
- *    pageId;  å½“å‰æ˜¾ç¤ºçš„é¡µé¢ä»£å·  æ³¨æ„è¦ä¸å®¢æˆ·ç«¯é…ç½®æ–‡ä»¶å†…å®¹åŒ¹é…
- *è¿”å›å€¼ï¼š
- *    QStringï¼š
- *             â€œâ€è¡¨ç¤ºæˆåŠŸï¼Œå¦åˆ™è¿”å›é”™è¯¯ä¿¡æ¯
+ *º¯Êı¹¦ÄÜ£º½ÓÊÕµ÷¶ÈĞÅÏ¢²¢ÏòÔ¶³ÌĞéÄâ»úÉÏµÄµ÷¶È¿Í»§¶Ë·¢ËÍµ÷¶ÈÖ¸Áî
+ * ²ÎÊı
+ *    vm_IP£º  µ±Ç°ÏÔÊ¾µÄĞéÄâ»úIPµØÖ·
+ *    pageId;  µ±Ç°ÏÔÊ¾µÄÒ³Ãæ´úºÅ  ×¢ÒâÒªÓë¿Í»§¶ËÅäÖÃÎÄ¼şÄÚÈİÆ¥Åä
+ *·µ»ØÖµ£º
+ *    QString£º
+ *             ¡°¡±±íÊ¾³É¹¦£¬·ñÔò·µ»Ø´íÎóĞÅÏ¢
  *
  */
 QString Attemper::Attemper_To_VM(QString vm_IP,int pageId)
 {
-    // é€šè¿‡DDSå‘å®¢æˆ·ç«¯å‘å¸ƒè°ƒåº¦å‘½ä»¤ V_PageAttemper
+    // Í¨¹ıDDSÏò¿Í»§¶Ë·¢²¼µ÷¶ÈÃüÁî V_PageAttemper
     QString strSign= "";
+    V_PageAttemper pageAttemper;
+    QByteArray bytename = vm_IP.toLatin1();
+    memcpy(pageAttemper.IP,bytename.data(),15);
+    pageAttemper.pageId = pageId;
+    int res = MainWindow::ddsPublic.WriteAttemperInfo(pageAttemper);
+    if(res != RETURNCODE_OK)
+    {
+        strSign = "DDS·¢ËÍ·µ»Ø´íÎó´úÂë " + res;
+    }
     return strSign;
 }
 
 /*
- * å‡½æ•°åŠŸèƒ½ï¼šè¾“å…¥è§’è‰²IDï¼Œæ ¹æ®å½“å‰è§’è‰²å®Œæˆè°ƒåº¦å®¢æˆ·ç«¯ä¸ç”»å¸ƒå®¢æˆ·ç«¯çš„è°ƒåº¦
- * å‚æ•°ï¼š
- *     combatPositionï¼šæœ¬ç«™ä½çš„ä¿¡æ¯
- * è¿”å›å€¼ï¼š
- *     QStringï¼šâ€œâ€è¡¨ç¤ºæ­£ç¡®ï¼Œå¦åˆ™è¿”å›é”™è¯¯ä¿¡æ¯
+ * º¯Êı¹¦ÄÜ£ºÊäÈë½ÇÉ«ID£¬¸ù¾İµ±Ç°½ÇÉ«Íê³Éµ÷¶È¿Í»§¶ËÓë»­²¼¿Í»§¶ËµÄµ÷¶È
+ * ²ÎÊı£º
+ *     combatPosition£º±¾Õ¾Î»µÄĞÅÏ¢
+ * ·µ»ØÖµ£º
+ *     QString£º¡°¡±±íÊ¾ÕıÈ·£¬·ñÔò·µ»Ø´íÎóĞÅÏ¢
  *
  *
  *
  */
 QString Attemper::ChangeRole(CombatPosition combatPosition)
 {
-    // éå†è§„åˆ™ï¼ŒæŸ¥æ‰¾åˆ°ç›¸åº”çš„è§„åˆ™
+    // ±éÀú¹æÔò£¬²éÕÒµ½ÏàÓ¦µÄ¹æÔò
     QString strSign = "";
     for(int i=0;i<attemperRules.count();i++)
     {
         Role curRole = combatPosition.getCurRole();
-        if(attemperRules[i].roleId == curRole.getRoleId()) // æ‰¾åˆ°æœ¬æˆ˜ä½å¯¹åº”çš„è§’è‰²çš„
+        if(attemperRules[i].roleId == curRole.getRoleId()) // ÕÒµ½±¾Õ½Î»¶ÔÓ¦µÄ½ÇÉ«µÄ
         {
-            // é¦–å…ˆå¯¹è°ƒåº¦å®¢æˆ·ç«¯è¿›è¡Œè°ƒåº¦ï¼Œå¯åŠ¨ç›¸åº”çš„å›¾å…ƒ
-            for(int j=0;j<curRole.getScreenList().count();j++) // éå†è§„åˆ™ä¸‹æ¯ä¸ªå±å¹•çš„ä¿¡æ¯
+            // Ê×ÏÈ¶Ôµ÷¶È¿Í»§¶Ë½øĞĞµ÷¶È£¬Æô¶¯ÏàÓ¦µÄÍ¼Ôª
+            for(int j=0;j<curRole.getScreenList().count();j++) // ±éÀú¹æÔòÏÂÃ¿¸öÆÁÄ»µÄĞÅÏ¢
             {
-               // éå†screenPage æ‰¾åˆ°æ¯ä¸ªé¡µé¢å¯¹åº”çš„pageIdä¿¡æ¯
-                int screenId = curRole.getScreenList().at(j).screenId; // æ‰¾åˆ°å¯¹åº”çš„å±å¹•ä»£å·
+               // ±éÀúscreenPage ÕÒµ½Ã¿¸öÒ³Ãæ¶ÔÓ¦µÄpageIdĞÅÏ¢
+                int screenId = curRole.getScreenList().at(j).screenId; // ÕÒµ½¶ÔÓ¦µÄÆÁÄ»´úºÅ
                 QMap<int, int>::iterator it = attemperRules[i].screenPage.find(screenId);
-                if (it == attemperRules[i].screenPage.constEnd())  // è¡¨ç¤ºä¸ºæ‰¾åˆ°å½“å‰é¡µé¢å¯¹åº”çš„è§„åˆ™
+                if (it == attemperRules[i].screenPage.constEnd())  // ±íÊ¾ÎªÕÒµ½µ±Ç°Ò³Ãæ¶ÔÓ¦µÄ¹æÔò
                 {
-                    continue; // æš‚æ—¶è·³è¿‡
+                    continue; // ÔİÊ±Ìø¹ı
                 }
-                // è¡¨ç¤ºæ‰¾åˆ°å½“å‰å¯¹åº”çš„è§„åˆ™
-                int pageId = it.value(); // æ‰¾åˆ°å¯¹åº”çš„é¡µé¢ä¿¡æ¯
+                // ±íÊ¾ÕÒµ½µ±Ç°¶ÔÓ¦µÄ¹æÔò
+                int pageId = it.value(); // ÕÒµ½¶ÔÓ¦µÄÒ³ÃæĞÅÏ¢
                 strSign = Attemper_To_VM(curRole.getScreenList().at(j).vmIp,pageId);
-                if(strSign != "") // åˆ¤æ–­è°ƒåº¦æ˜¯å¦æˆåŠŸ è‹¥å¤±è´¥åˆ™ç»ˆæ­¢ç”»å¸ƒè°ƒåº¦ï¼Œç›´æ¥è¿”å›
+                if(strSign != "") // ÅĞ¶Ïµ÷¶ÈÊÇ·ñ³É¹¦ ÈôÊ§°ÜÔòÖÕÖ¹»­²¼µ÷¶È£¬Ö±½Ó·µ»Ø
                    return strSign;
             }
-            // å¯¹ç”»å¸ƒå®¢æˆ·ç«¯è¿›è¡Œè°ƒåº¦
+            // ¶Ô»­²¼¿Í»§¶Ë½øĞĞµ÷¶È
             strSign = Attepmer_To_HuaBuTool(curRole.getRoleName(),curRole.getRoleId());
-            return strSign;
+            if(strSign != "")
+                return strSign;
+            break;
         }
     }
-    strSign = "æ‰¾ä¸åˆ°è¯¥è§’è‰²åŒ¹é…çš„è°ƒåº¦è§„åˆ™ï¼Œè¯·ç¡®è®¤";
     return strSign;
 }
 
 /*
  *
- * å‡½æ•°åŠŸèƒ½ï¼šæ ¹æ®å½“å‰è§’è‰²ä¿¡æ¯ï¼Œç”Ÿæˆç”»å¸ƒæ–¹æ¡ˆåç§°ï¼Œé€šè¿‡ç½‘ç»œå‘é€ç»™ç”»å¸ƒå®¢æˆ·ç«¯
- * å‚æ•°ï¼š
- *      roleNameï¼šå½“å‰è§’è‰²åç§°
- *      roleIdï¼šå½“å‰è§’è‰²Id
- * è¿”å›å€¼ï¼š
+ * º¯Êı¹¦ÄÜ£º¸ù¾İµ±Ç°½ÇÉ«ĞÅÏ¢£¬Éú³É»­²¼·½°¸Ãû³Æ£¬Í¨¹ıÍøÂç·¢ËÍ¸ø»­²¼¿Í»§¶Ë
+ * ²ÎÊı£º
+ *      roleName£ºµ±Ç°½ÇÉ«Ãû³Æ
+ *      roleId£ºµ±Ç°½ÇÉ«Id
+ * ·µ»ØÖµ£º
  *     int:
- *        0>ï¼šè¡¨ç¤ºæˆåŠŸ è¿”å›å‘é€å­—èŠ‚çš„é•¿åº¦
- *        -1ï¼šè¡¨ç¤ºç¼ºå¤±è§’è‰²ä¿¡æ¯ï¼Œæ— æ³•ç”Ÿæˆ
+ *        0>£º±íÊ¾³É¹¦ ·µ»Ø·¢ËÍ×Ö½ÚµÄ³¤¶È
+ *        -1£º±íÊ¾È±Ê§½ÇÉ«ĞÅÏ¢£¬ÎŞ·¨Éú³É
  *
  *
  */
-int Attemper::Attepmer_To_HuaBuTool(QString roleName, int roleId)
+QString Attemper::Attepmer_To_HuaBuTool(QString roleName, int roleId)
 {
-    QString huabu_Name;
-    roleName = roleName; // ç”»å¸ƒæ–¹æ¡ˆä¸º  è§’è‰²åç§°
-    // é€šè¿‡UDPå°†ç”»å¸ƒæ–¹æ¡ˆå‘é€ V_HB_Attemper
+    QString ret = "";
+    roleName = roleName; // »­²¼·½°¸Îª  ½ÇÉ«Ãû³Æ
+    // Í¨¹ıUDP½«»­²¼·½°¸·¢ËÍ V_HB_Attemper
     CanvasMsg canvasMsg;
-    // æŠ¥æ–‡æ ‡è¯†
+    // ±¨ÎÄ±êÊ¶
     memcpy(canvasMsg.flag,CANVAS_MSG_FLAG,4);
     canvasMsg.length = roleName.length();
     QByteArray bytename = roleName.toLatin1();
@@ -97,8 +107,10 @@ int Attemper::Attepmer_To_HuaBuTool(QString roleName, int roleId)
     QDataStream out(&datagram,QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_4_8);
     out<<&canvasMsg;
-    // å‘é€æ•°æ®
-    int flag = udp_ToHuaBu.writeDatagram(datagram,QHostAddress::LocalHost,CLIENT_PORT); // ç”»å¸ƒå’Œè™šæ‹Ÿæœºå®¢æˆ·ç«¯åœ¨åŒä¸€å°è®¾å¤‡é»˜è®¤å°±æ˜¯æœ¬æœº
-    return flag;
+    // ·¢ËÍÊı¾İ
+    int flag = udp_ToHuaBu.writeDatagram(datagram,QHostAddress::LocalHost,CLIENT_PORT); // »­²¼ºÍĞéÄâ»ú¿Í»§¶ËÔÚÍ¬Ò»Ì¨Éè±¸Ä¬ÈÏ¾ÍÊÇ±¾»ú
+    if(flag <= 0)
+        ret = "·¢ËÍ¸øµ÷¶È·şÎñ·şÎñÆ÷ÃüÁîÊ§°Ü";
+    return ret;
 }
 

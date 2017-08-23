@@ -6,32 +6,32 @@
 #include <QCheckBox>
 #include "combatposition.h"
 
-// è®°å½•å¯¹åº”ä¸€ä¸ªè§’è‰²ä¸‹ï¼Œæ¯ä¸ªscreenIdå¯¹åº”çš„é¡µé¢åç§°å’Œä»£å·
+// ¼ÇÂ¼¶ÔÓ¦Ò»¸ö½ÇÉ«ÏÂ£¬Ã¿¸öscreenId¶ÔÓ¦µÄÒ³ÃæÃû³ÆºÍ´úºÅ
 struct AttemptRule
 {
-    int roleId; // è§’è‰²IDå·
-    QMap<int,int> screenPage; // æ¯ä¸ªscreenIdå¯¹åº”çš„æ˜¾ç¤ºé¡µé¢ æ³¨ è¿™é‡Œæš‚æ—¶å…ˆç”¨åç§°ï¼Œåç»­å†è€ƒè™‘ç”¨ä»£å·è¿˜æ˜¯åç§° æ³¨æ„è¿™é‡Œä»£å·å¿…é¡»ä¸å®¢æˆ·ç«¯çš„é¡µé¢åŒ¹é…
+    int roleId; // ½ÇÉ«IDºÅ
+    QMap<int,int> screenPage; // Ã¿¸öscreenId¶ÔÓ¦µÄÏÔÊ¾Ò³Ãæ ×¢ ÕâÀïÔİÊ±ÏÈÓÃÃû³Æ£¬ºóĞøÔÙ¿¼ÂÇÓÃ´úºÅ»¹ÊÇÃû³Æ ×¢ÒâÕâÀï´úºÅ±ØĞëÓë¿Í»§¶ËµÄÒ³ÃæÆ¥Åä
 };
 
-// è®°å½•å½“å‰æ¯ä¸ªcheckboxå¯¹åº”çš„ç«™ä½ä¿¡æ¯å’Œè§’è‰²ä¿¡æ¯
+// ¼ÇÂ¼µ±Ç°Ã¿¸öcheckbox¶ÔÓ¦µÄÕ¾Î»ĞÅÏ¢ºÍ½ÇÉ«ĞÅÏ¢
 class CombatPosition;
 struct CheckBoxInfo
 {
-    CombatPosition *combatPosition; // å¯¹åº”çš„ç«™ä½å¯¹è±¡
-    QCheckBox *checkbox; // å¯¹åº”çš„checkboxå¯¹è±¡
+    CombatPosition *combatPosition; // ¶ÔÓ¦µÄÕ¾Î»¶ÔÏó
+    QCheckBox *checkbox; // ¶ÔÓ¦µÄcheckbox¶ÔÏó
 };
 
-// ä¸ç”»å¸ƒé€šä¿¡ä¹‹é—´çš„ç»“æ„ä½“
+// Óë»­²¼Í¨ĞÅÖ®¼äµÄ½á¹¹Ìå
 const unsigned short CLIENT_PORT = 5000;
 const unsigned short SERVICE_PORT = 6000;
 const unsigned char CANVAS_MSG_FLAG[4] = {0x0C,0x0A,0x0B,0x05};
 const int MAX_NAME_LENGTH = 64;
 struct CanvasMsg
 {
-    unsigned char flag[4]; // æŠ¥æ–‡æ ‡è¯†
-    unsigned char length; // ç”»å¸ƒåå­—å­—èŠ‚é•¿åº¦ æœ€å¤§ä¸ºMAX_NAME_LENGTH
-    char bak[2]; // å¤‡ä»½
-    char canvasName[0]; // ç”»å¸ƒåå­—ï¼Œå­—èŠ‚é•¿åº¦ä¸èƒ½è¶…è¿‡MAX_NAME_LENGTH
+    unsigned char flag[4]; // ±¨ÎÄ±êÊ¶
+    unsigned char length; // »­²¼Ãû×Ö×Ö½Ú³¤¶È ×î´óÎªMAX_NAME_LENGTH
+    char bak[2]; // ±¸·İ
+    char canvasName[0]; // »­²¼Ãû×Ö£¬×Ö½Ú³¤¶È²»ÄÜ³¬¹ıMAX_NAME_LENGTH
 };
 
 #endif // USERDATATYPE_H

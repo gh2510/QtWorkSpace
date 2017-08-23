@@ -21,7 +21,11 @@ SOURCES += main.cpp\
     attemper.cpp \
     roleselect.cpp \
     role.cpp \
-    attemperform.cpp
+    attemperform.cpp \
+    IDL_DataWriter.cpp \
+    IDL_DataReader.cpp \
+    IDL_attempter.cpp \
+    ddspublich.cpp
 
 HEADERS  += mainwindow.h \
     attemperpage.h \
@@ -32,7 +36,15 @@ HEADERS  += mainwindow.h \
     attemper.h \
     roleselect.h \
     role.h \
-    attemperform.h
+    attemperform.h \
+    IDL_TypeSupport.h \
+    IDL_DataWriter.h \
+    IDL_DataReader.h \
+    IDL_attempterTC.h \
+    IDL_attempter.h \
+    IDL_Agent.h \
+    DDS_API.h \
+    ddspublich.h
 
 FORMS    += mainwindow.ui \
     attemperpage.ui \
@@ -41,3 +53,7 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     qtres.qrc
+
+INCLUDEPATH += "./DDSDebug/include"
+
+

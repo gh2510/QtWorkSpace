@@ -9,20 +9,20 @@
 #include <QtNetwork/QUdpSocket>
 
 /*
- * ç±»è¯´æ˜ï¼šè°ƒåº¦ç±»ï¼Œè´Ÿè´£æ ¹æ®é…ç½®æ–‡ä»¶ä¸­è°ƒåº¦ç­–ç•¥ï¼Œåˆ¤æ–­åœ¨ä¸åŒè§’è‰²ä¸‹ï¼Œä¸‰ä¸ªå±å¹•åˆ†åˆ«æ˜¾ç¤ºçš„é¡µé¢ä»£å·å’Œåç§°
- * åˆ›å»ºäººï¼š é«˜æš 
+ * ÀàËµÃ÷£ºµ÷¶ÈÀà£¬¸ºÔğ¸ù¾İÅäÖÃÎÄ¼şÖĞµ÷¶È²ßÂÔ£¬ÅĞ¶ÏÔÚ²»Í¬½ÇÉ«ÏÂ£¬Èı¸öÆÁÄ»·Ö±ğÏÔÊ¾µÄÒ³Ãæ´úºÅºÍÃû³Æ
+ * ´´½¨ÈË£º ¸ß?
  *
  */
 class Attemper
 {
 public:
     Attemper();
-    QString ChangeRole(CombatPosition combatPosition); // åˆ‡æ¢è§’è‰²ï¼Œ è¿›è¡Œè°ƒåº¦
+    QString ChangeRole(CombatPosition combatPosition); // ÇĞ»»½ÇÉ«£¬ ½øĞĞµ÷¶È
 private:
-    int Attepmer_To_HuaBuTool(QString roleName,int roleId); // æ ¹æ®å½“å‰è§’è‰²ï¼Œå‘ç”»å¸ƒå®¢æˆ·ç«¯ä¸‹è¾¾æœ¬æ¬¡è°ƒåº¦æ–¹æ¡ˆ
-    QString Attemper_To_VM(QString vm_IP, int pageId = 0); // æ¥æ”¶è°ƒåº¦ä¿¡æ¯å¹¶å‘è¿œç¨‹è™šæ‹Ÿæœºä¸Šçš„è°ƒåº¦å®¢æˆ·ç«¯å‘é€è°ƒåº¦æŒ‡ä»¤
+    QString Attepmer_To_HuaBuTool(QString roleName,int roleId); // ¸ù¾İµ±Ç°½ÇÉ«£¬Ïò»­²¼¿Í»§¶ËÏÂ´ï±¾´Îµ÷¶È·½°¸
+    QString Attemper_To_VM(QString vm_IP, int pageId = 0); // ½ÓÊÕµ÷¶ÈĞÅÏ¢²¢ÏòÔ¶³ÌĞéÄâ»úÉÏµÄµ÷¶È¿Í»§¶Ë·¢ËÍµ÷¶ÈÖ¸Áî
 public:
-    QList<AttemptRule> attemperRules;  // è°ƒåº¦è§„åˆ™åˆ—è¡¨ è®°å½•æ¯ä¸ªè§’è‰²ä¸‹ï¼Œæ¯ä¸ªå±å¹•å¯¹åº”çš„é¡µé¢ä»£å·
+    QList<AttemptRule> attemperRules;  // µ÷¶È¹æÔòÁĞ±í ¼ÇÂ¼Ã¿¸ö½ÇÉ«ÏÂ£¬Ã¿¸öÆÁÄ»¶ÔÓ¦µÄÒ³Ãæ´úºÅ
 private:
     QUdpSocket udp_ToHuaBu;
 };

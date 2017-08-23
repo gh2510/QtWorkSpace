@@ -9,8 +9,8 @@
 #include <QPushButton>
 
 /*
- * ç±»è¯´æ˜ï¼š è°ƒåº¦çª—å£ç±»ã€‚è´Ÿè´£æ˜¾ç¤ºè°ƒåº¦ç•Œé¢æ¡†æ¶ï¼Œå…è®¸ç”¨æˆ·åˆ‡æ¢è§’è‰²ï¼Œå®ç°é¡µé¢è°ƒåº¦ã€‚åŒæ—¶å¯ä»¥è¿”å›åˆ°ä¹‹å‰çš„ç«™ä½
- * åˆ›å»ºäººï¼š é«˜æš 
+ * ÀàËµÃ÷£º µ÷¶È´°¿ÚÀà¡£¸ºÔğÏÔÊ¾µ÷¶È½çÃæ¿ò¼Ü£¬ÔÊĞíÓÃ»§ÇĞ»»½ÇÉ«£¬ÊµÏÖÒ³Ãæµ÷¶È¡£Í¬Ê±¿ÉÒÔ·µ»Øµ½Ö®Ç°µÄÕ¾Î»
+ * ´´½¨ÈË£º ¸ß?
  *
  *
  */
@@ -26,22 +26,22 @@ class AttemperForm : public QWidget
     
 public:
     explicit AttemperForm(QWidget *frontWidget,QWidget *parent = 0);
-    void UpdateForm(); // æ›´æ–°ç•Œé¢ä¸Šçš„ä¿¡æ¯
+    void UpdateForm(); // ¸üĞÂ½çÃæÉÏµÄĞÅÏ¢
     void InitWidget();
     ~AttemperForm();
 
 public slots:
-    void resbtn_click(); // ç‚¹å‡»è¿”å›ä¸Šä¸€çº§äº‹ä»¶
-    void exitbtn_click(); // ç‚¹å‡»é€€å‡ºçš„äº‹ä»¶
-    void indexChanged(const QString &text);  // åˆ‡æ¢è§’è‰²çš„äº‹ä»¶
+    void resbtn_click(); // µã»÷·µ»ØÉÏÒ»¼¶ÊÂ¼ş
+    void exitbtn_click(); // µã»÷ÍË³öµÄÊÂ¼ş
+    void indexChanged(const QString &text);  // ÇĞ»»½ÇÉ«µÄÊÂ¼ş
     
 private:
     Ui::AttemperForm *ui;
-    QLabel *cpLabel;  // ç«™ä½ä¿¡æ¯
-    QComboBox *rlCombox; // è§’è‰²åˆ—è¡¨
-    QPushButton *retBtn; // è¿”å›ä¸Šä¸€çº§æŒ‰é’®
-    QPushButton *exitBtn; // é€€å‡ºæŒ‰é’®
-    QWidget *frontWidget; // æ‰“å¼€æœ¬çª—å£çš„ä¸Šä¸€çº§çª—å£
+    QLabel *cpLabel;  // Õ¾Î»ĞÅÏ¢
+    QComboBox *rlCombox; // ½ÇÉ«ÁĞ±í
+    QPushButton *retBtn; // ·µ»ØÉÏÒ»¼¶°´Å¥
+    QPushButton *exitBtn; // ÍË³ö°´Å¥
+    QWidget *frontWidget; // ´ò¿ª±¾´°¿ÚµÄÉÏÒ»¼¶´°¿Ú
 
 };
 

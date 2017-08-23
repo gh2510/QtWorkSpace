@@ -1,4 +1,4 @@
-ï»¿#include "attemperform.h"
+#include "attemperform.h"
 #include "roleselect.h"
 #include "ui_attemperform.h"
 #include <QDesktopWidget>
@@ -18,30 +18,30 @@ AttemperForm::~AttemperForm()
 
 
 /*
- * å‡½æ•°åç§°ï¼šInitWidget
- * å‡½æ•°åŠŸèƒ½ï¼šè´Ÿè´£æ ¹æ®å½“å‰ç”¨æˆ·é€‰æ‹©çš„ç«™ä½ï¼Œåˆå§‹åŒ–çª—å£
- * å‚æ•°ï¼š
- *      æ— 
- *  è¿”å›žå€¼ï¼š
- *       æ— 
+ * º¯ÊýÃû³Æ£ºInitWidget
+ * º¯Êý¹¦ÄÜ£º¸ºÔð¸ù¾Ýµ±Ç°ÓÃ»§Ñ¡ÔñµÄÕ¾Î»£¬³õÊ¼»¯´°¿Ú
+ * ²ÎÊý£º
+ *      ÎÞ
+ *  ·µ»ØÖµ£º
+ *       ÎÞ
  *
  */
 void AttemperForm::InitWidget()
 {
     setWindowFlags(Qt::FramelessWindowHint);
-    // è®¾ç½®çª—å£çš„ä½ç½®ï¼ŒèŽ·å¾—å±å¹•çš„åˆ†è¾¨çŽ‡
+    // ÉèÖÃ´°¿ÚµÄÎ»ÖÃ£¬»ñµÃÆÁÄ»µÄ·Ö±æÂÊ
     int screenW = qApp->desktop()->screen()->width();
     int screenH = qApp->desktop()->screen()->height();
     float hlvt = 0.9f;
     this->setGeometry(0, 0 ,screenW, screenH * (1.0f-hlvt)); // screenH * hlvt
     CombatPosition combatPosition = MainWindow::currentCombatPosition;
-    // é€‰æ‹©å¸ƒå±€æ¨¡å¼
-    QHBoxLayout *layout = new QHBoxLayout;  //åˆ›å»ºæŒ‰é’®çš„å¸ƒå±€å¯¹è±¡
-    // åˆ›å»ºç«™ä½
+    // Ñ¡Ôñ²¼¾ÖÄ£Ê½
+    QHBoxLayout *layout = new QHBoxLayout;  //´´½¨°´Å¥µÄ²¼¾Ö¶ÔÏó
+    // ´´½¨Õ¾Î»
 
-    int textWidth = 120; // ä¸€èˆ¬æŽ§ä»¶çš„å®½åº¦
+    int textWidth = 120; // Ò»°ã¿Ø¼þµÄ¿í¶È
 
-    QLabel *cpLabelSign = new QLabel("å½“å‰æˆ˜ä½ï¼š");
+    QLabel *cpLabelSign = new QLabel("µ±Ç°Õ½Î»£º");
     cpLabelSign->setAlignment(Qt::AlignCenter);
     cpLabelSign->setFixedWidth(textWidth);
     layout->addWidget(cpLabelSign);
@@ -50,12 +50,12 @@ void AttemperForm::InitWidget()
     cpLabel->setAlignment(Qt::AlignCenter);
     layout->addWidget(cpLabel);
 
-    // åˆ›å»ºè§’è‰²
-    QLabel *rlLabelSign = new QLabel("å½“å‰è§’è‰²ï¼š");
+    // ´´½¨½ÇÉ«
+    QLabel *rlLabelSign = new QLabel("µ±Ç°½ÇÉ«£º");
     rlLabelSign->setAlignment(Qt::AlignCenter);
     rlLabelSign->setFixedWidth(textWidth);
     layout->addWidget(rlLabelSign);
-    // åˆ›å»ºä¸‹æ‹‰æ¡†
+    // ´´½¨ÏÂÀ­¿ò
     rlCombox = new QComboBox();
     for(int i=0;i<combatPosition.roleList.count();i++)
     {
@@ -64,42 +64,42 @@ void AttemperForm::InitWidget()
     connect(rlCombox,SIGNAL(currentIndexChanged(const QString&)),this,SLOT(indexChanged(const QString&)));
     layout->addWidget(rlCombox);
     rlCombox->setFixedWidth(textWidth);
-    // æ·»åŠ ä¸€ä¸ªå¼¹ç°§æŽ§ä»¶
+    // Ìí¼ÓÒ»¸öµ¯»É¿Ø¼þ
     layout->addStretch(3);
-    // æ·»åŠ ä¸€ç»„æŒ‰é’®
+    // Ìí¼ÓÒ»×é°´Å¥
     retBtn = new QPushButton();
-    retBtn->setText("è¿”å›ž");
+    retBtn->setText("·µ»Ø");
     retBtn->setFixedWidth(90);
     layout->addWidget(retBtn);
     exitBtn = new QPushButton();
-    exitBtn->setText("é€€å‡º");
+    exitBtn->setText("ÍË³ö");
     exitBtn->setFixedWidth(90);
     layout->addWidget(exitBtn);
 
     setLayout(layout);
 
-    // å…³è”äº‹ä»¶
+    // ¹ØÁªÊÂ¼þ
     connect(retBtn, SIGNAL(clicked()), this, SLOT(resbtn_click()));
     connect(exitBtn, SIGNAL(clicked()), this, SLOT(exitbtn_click()));
 
 }
 
 /*
- * å‡½æ•°åç§°ï¼šUpdateForm
- * å‡½æ•°åŠŸèƒ½ï¼šæ›´æ–°ç«™ä½ã€è§’è‰²ç­‰ä¿¡æ¯
- * å‚æ•°ï¼š
- *     æ— 
- * è¿”å›žå€¼ï¼š
- *      æ— 
+ * º¯ÊýÃû³Æ£ºUpdateForm
+ * º¯Êý¹¦ÄÜ£º¸üÐÂÕ¾Î»¡¢½ÇÉ«µÈÐÅÏ¢
+ * ²ÎÊý£º
+ *     ÎÞ
+ * ·µ»ØÖµ£º
+ *      ÎÞ
  *
  */
 void AttemperForm::UpdateForm()
 {
     CombatPosition combatPosition;
     combatPosition = MainWindow::currentCombatPosition;
-    // æ›´æ–°ç«™ä½åç§°
+    // ¸üÐÂÕ¾Î»Ãû³Æ
     cpLabel->setText(combatPosition.estradeName);
-    // æ›´æ–°è§’è‰²åç§°ä¸Žåˆ—è¡¨
+    // ¸üÐÂ½ÇÉ«Ãû³ÆÓëÁÐ±í
     rlCombox->clear();
      int index = -1;
     for(int i=0;i<combatPosition.roleList.count();i++)
@@ -113,9 +113,9 @@ void AttemperForm::UpdateForm()
 
 void AttemperForm::resbtn_click()
 {
-    // è¿”å›žåˆ°ä¸Šä¸€çº§çª—å£
+    // ·µ»Øµ½ÉÏÒ»¼¶´°¿Ú
     this->hide();
-    // æ¸…ç©ºå½“å‰é€‰æ‹©çš„ä¿¡æ¯
+    // Çå¿Õµ±Ç°Ñ¡ÔñµÄÐÅÏ¢
     ((RoleSelect*)frontWidget)->UpdateWidget();
     frontWidget->show();
 }
@@ -127,18 +127,18 @@ void AttemperForm::exitbtn_click()
 
 /*
  *
- * å‡½æ•°åç§°ï¼šindexChanged
- * å‡½æ•°åŠŸèƒ½ï¼šè§’è‰²çš„comboåˆ‡æ¢å“åº”äº‹ä»¶
- * å‚æ•°ï¼š
- *     textï¼šåˆ‡æ¢çš„åç§°
- * è¿”å›žå€¼ï¼š
- *     æ— 
+ * º¯ÊýÃû³Æ£ºindexChanged
+ * º¯Êý¹¦ÄÜ£º½ÇÉ«µÄcomboÇÐ»»ÏìÓ¦ÊÂ¼þ
+ * ²ÎÊý£º
+ *     text£ºÇÐ»»µÄÃû³Æ
+ * ·µ»ØÖµ£º
+ *     ÎÞ
  *
  */
 void AttemperForm::indexChanged(const QString& text)
 {
-    // æ ¹æ®åç§°åˆ¤æ–­å½“å‰è§’è‰²ä»£å·
-    if(text == "") // è¡¨ç¤ºæ¸…ç©ºäº§ç”Ÿçš„äº‹ä»¶
+    // ¸ù¾ÝÃû³ÆÅÐ¶Ïµ±Ç°½ÇÉ«´úºÅ
+    if(text == "") // ±íÊ¾Çå¿Õ²úÉúµÄÊÂ¼þ
         return;
     Role role;
 
@@ -148,7 +148,11 @@ void AttemperForm::indexChanged(const QString& text)
         if(role.getRoleName() == text)
         {
             MainWindow::currentCombatPosition.SetCurRole(role);
-            MainWindow::attmper->ChangeRole(MainWindow::currentCombatPosition); // è¿›è¡Œè°ƒåº¦å‘½ä»¤
+            QString ret = MainWindow::attmper->ChangeRole(MainWindow::currentCombatPosition); // ½øÐÐµ÷¶ÈÃüÁî
+            if(ret != "")
+            {
+                MainWindow::WarnMessage(ret);
+            }
             return;
         }
     }

@@ -2,8 +2,8 @@
 #define CONFIGPARSE_H
 #include <QString>
 /*
- *ç±»è¯´æ˜ï¼šXMLè¯»å–ç±»ã€‚è´Ÿè´£è¯»å–æŒ‡å®šçš„è°ƒåº¦é…ç½®xmlå¹¶è§£æã€‚
- *åˆ›å»ºäººï¼šé«˜æš 
+ *ÀàËµÃ÷£ºXML¶ÁÈ¡Àà¡£¸ºÔğ¶ÁÈ¡Ö¸¶¨µÄµ÷¶ÈÅäÖÃxml²¢½âÎö¡£
+ *´´½¨ÈË£º¸ß?
  *
  */
 
@@ -18,16 +18,16 @@ class ConfigParse
 public:
     ConfigParse();
     QString pasreConfigFile(QString xmlPath);
-    int getCombatPositionNum(); // æ ¹æ®é…ç½®æ–‡ä»¶è¿”å›å½“å‰ç³»ç»Ÿå†…ç«™ä½çš„æ•°é‡
-    int getMaxRoleNum();  // æ ¹æ®ç³»ç»Ÿå†…æˆ˜ä½ä¸­æœ€å¤§è§’è‰²çš„æ•°é‡
+    int getCombatPositionNum(); // ¸ù¾İÅäÖÃÎÄ¼ş·µ»Øµ±Ç°ÏµÍ³ÄÚÕ¾Î»µÄÊıÁ¿
+    int getMaxRoleNum();  // ¸ù¾İÏµÍ³ÄÚÕ½Î»ÖĞ×î´ó½ÇÉ«µÄÊıÁ¿
     QList<CombatPosition> getCombatPositionList();
     QList<AttemptRule> getAttemperRules();
 private:
-    int combatPositionNum; // ç³»ç»Ÿå†…çš„æˆ˜ä½çš„æ•°é‡
-    int maxRoleNum; // ç³»ç»Ÿå†…å„æˆ˜ä½ä¸­æœ€å¤§è§’è‰²çš„æ•°é‡
+    int combatPositionNum; // ÏµÍ³ÄÚµÄÕ½Î»µÄÊıÁ¿
+    int maxRoleNum; // ÏµÍ³ÄÚ¸÷Õ½Î»ÖĞ×î´ó½ÇÉ«µÄÊıÁ¿
 private:
-    QList<CombatPosition> combatPositionList; // å½“å‰é…ç½®æ–‡ä»¶ä¸­æ‰€æœ‰ç«™ä½çš„å¯¹è±¡
-    QList<AttemptRule> attemperRules;  // è°ƒåº¦è§„åˆ™åˆ—è¡¨ è®°å½•æ¯ä¸ªè§’è‰²ä¸‹ï¼Œæ¯ä¸ªå±å¹•å¯¹åº”çš„é¡µé¢ä»£å·
+    QList<CombatPosition> combatPositionList; // µ±Ç°ÅäÖÃÎÄ¼şÖĞËùÓĞÕ¾Î»µÄ¶ÔÏó
+    QList<AttemptRule> attemperRules;  // µ÷¶È¹æÔòÁĞ±í ¼ÇÂ¼Ã¿¸ö½ÇÉ«ÏÂ£¬Ã¿¸öÆÁÄ»¶ÔÓ¦µÄÒ³Ãæ´úºÅ
 };
 
 #endif // CONFIGPARSE_H

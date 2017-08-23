@@ -1,0 +1,34 @@
+/**
+* @ file DataMessageRequest.h
+* @ brief DataMessageRequest define
+* @ author Jiang Taoran <taoran.seu.edu.cn>
+* @ version 0.1
+* @ history
+*   1. create on 2011-4-13
+*/
+#ifndef _RTPS_DATAMESSAGE_REQUEST_H_INCLUDED_
+#define _RTPS_DATAMESSAGE_REQUEST_H_INCLUDED_
+
+#include "rtps/Request.h"
+
+class ReaderProxy;
+
+class DataMessageRequest : public Request {
+public:
+    DataMessageRequest (Endpoint *endpoint,
+        ReaderProxy *readerProxy,
+        MessageProcessor *messageProcessor,
+        MessageTransmitter *messageTransmitter,
+        Time_t startTime,
+        Time_t endTime) :
+    Request (endpoint, messageProcessor, messageTransmitter, startTime, endTime) {
+        m_readerProxy = readerProxy;
+    };
+
+    ReturnCode_t execute();
+
+private:
+    ReaderProxy *m_readerProxy;
+};
+
+#endif

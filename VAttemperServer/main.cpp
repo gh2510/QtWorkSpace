@@ -1,18 +1,20 @@
-ï»¿#include "mainwindow.h"
+#include "mainwindow.h"
 #include <QApplication>
 #include "roleselect.h"
 #include <QString>
 #include <QTextCodec>
 
 /*
- *åˆ›å»ºäººï¼šé«˜æš 
- *æ—¥æœŸï¼š2017å¹´8æœˆ17æ—¥
- *äº§å“è¯´æ˜ï¼š
- *        æœ¬è½¯ä»¶ä¸ºè™šæ‹ŸåŒ–å¹³å°ç»Ÿä¸€è°ƒåº¦è½¯ä»¶å®¢æˆ·ç«¯ï¼Œè¿è¡Œæˆ˜ä½å°ï¼Œè´Ÿè´£æä¾›åŸºäºè§’è‰²çš„è°ƒåº¦åŠŸèƒ½ï¼Œæ§åˆ¶è°ƒåº¦å®¢æˆ·ç«¯å’Œç”»å¸ƒå®¢æˆ·ç«¯ï¼Œè°ƒåº¦åŸå‹ç³»ç»Ÿ
+ *´´½¨ÈË£º¸ß??
+ *ÈÕÆÚ£º2017Äê8ÔÂ17ÈÕ
+ *²úÆ·ËµÃ÷£º
+ *        ±¾Èí¼şÎªĞéÄâ»¯Æ½Ì¨Í³Ò»µ÷¶ÈÈí¼ş¿Í»§¶Ë£¬ÔËĞĞÕ½Î»Ì¨£¬¸ºÔğÌá¹©»ùÓÚ½ÇÉ«µÄµ÷¶È¹¦ÄÜ£¬¿ØÖÆµ÷¶È¿Í»§¶ËºÍ»­²¼¿Í»§¶Ë£¬µ÷¶ÈÔ­ĞÍÏµÍ³
  *
- *ç‰ˆæœ¬å·ï¼š
- *v1.0ï¼šåˆ›å»º
+ *°æ±¾ºÅ£º
+ *v1.0£º´´½¨
  */
+
+#pragma comment(lib,"BLUEDCS.lib")
 
 int main(int argc, char *argv[])
 {
@@ -31,13 +33,26 @@ int main(int argc, char *argv[])
     a.setStyleSheet(styleSheet);
     file.close();*/
 
-    // è¯»å–è§£æé…ç½®æ–‡ä»¶
-
+    // ¶ÁÈ¡½âÎöÅäÖÃÎÄ¼ş
     ConfigParse configParse;
     RoleSelect *roleSelectWidget = new RoleSelect();
     QString str = configParse.pasreConfigFile("final.xml");
+    qDebug()<<str;
+
+    MainWindow mainWindow;
+    mainWindow.hide();
     if(str != "")
-        QMessageBox::information(roleSelectWidget,"é”™è¯¯æç¤º",str,QMessageBox::Ok);
+    {
+        MainWindow::WarnMessage(str);
+        exit(0);
+    }
+
+    // ³õÊ¼»¯DDSÅäÖÃ
+    int res = MainWindow::ddsPublic.InitDDS();
+    if(res < 0)
+    {
+        MainWindow::WarnMessage("³õÊ¼»¯DDSÊ§°Ü");
+    }
 
     roleSelectWidget->InitWidget(configParse);
     roleSelectWidget->show();

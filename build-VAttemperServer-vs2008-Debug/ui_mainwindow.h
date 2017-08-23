@@ -15,7 +15,6 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QHeaderView>
 #include <QtGui/QMainWindow>
-#include <QtGui/QStatusBar>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,19 +23,27 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(699, 38);
+        MainWindow->setStyleSheet(QString::fromUtf8("QWidget\n"
+"{\n"
+"	\n"
+"	background-color: rgb(170, 85, 255);\n"
+"}\n"
+"\n"
+"QLabel\n"
+"{\n"
+"	\n"
+"	font: 16pt \"\346\245\267\344\275\223\";\n"
+"}\n"
+""));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         MainWindow->setCentralWidget(centralWidget);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QString::fromUtf8("statusBar"));
-        MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
 

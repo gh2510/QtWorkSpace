@@ -16,7 +16,7 @@
 
 /*
  *
- *ç±»è¯´æ˜ï¼šç•Œé¢ç±»ã€‚è´Ÿè´£æ ¹æ®é…ç½®æ–‡ä»¶ï¼Œæ˜¾ç¤ºè§’è‰²é€‰æ‹©ç±»
+ *ÀàËµÃ÷£º½çÃæÀà¡£¸ºÔğ¸ù¾İÅäÖÃÎÄ¼ş£¬ÏÔÊ¾½ÇÉ«Ñ¡ÔñÀà
  *
  *
  */
@@ -32,21 +32,21 @@ class RoleSelect : public QWidget
 public:
     explicit RoleSelect(QWidget *parent = 0);
     ~RoleSelect();
-    void InitWidget(ConfigParse &configParse); // æ ¹æ®é…ç½®æ–‡ä»¶ä¿¡æ¯åˆå§‹åŒ–çª—å£æ˜¾ç¤º
-    void UpdateWidget();  // å½“è¿”å›ä¸Šä¸€çº§æ—¶ï¼Œæ ¹æ®å½“å‰çš„è§’è‰²ä¿¡æ¯æ›´æ–°æ˜¾ç¤ºçª—å£
+    void InitWidget(ConfigParse &configParse); // ¸ù¾İÅäÖÃÎÄ¼şĞÅÏ¢³õÊ¼»¯´°¿ÚÏÔÊ¾
+    void UpdateWidget();  // µ±·µ»ØÉÏÒ»¼¶Ê±£¬¸ù¾İµ±Ç°µÄ½ÇÉ«ĞÅÏ¢¸üĞÂÏÔÊ¾´°¿Ú
     
 public slots:
-    void okbtn_click(); // ç‚¹å‡»ç¡®å®šå“åº”äº‹ä»¶
-    void cancelbtn_click(); // ç‚¹å‡»é€€å‡ºå“åº”äº‹ä»¶
-    void checkbox_click(bool checked); // ç‚¹å‡»è§’è‰²å“åº”äº‹ä»¶
+    void okbtn_click(); // µã»÷È·¶¨ÏìÓ¦ÊÂ¼ş
+    void cancelbtn_click(); // µã»÷ÍË³öÏìÓ¦ÊÂ¼ş
+    void checkbox_click(bool checked); // µã»÷½ÇÉ«ÏìÓ¦ÊÂ¼ş
 private:
     Ui::RoleSelect *ui;
-    QPushButton *okButton; // ç¡®å®šæŒ‰é’®
-    QPushButton *cancelButton; // é€€å‡ºæŒ‰é’®
+    QPushButton *okButton; // È·¶¨°´Å¥
+    QPushButton *cancelButton; // ÍË³ö°´Å¥
     QButtonGroup *checkboxGroup;
-    QList<CheckBoxInfo> checkInfoList; // æ‰€æœ‰å¤é€‰æ¡†å¯¹è±¡
+    QList<CheckBoxInfo> checkInfoList; // ËùÓĞ¸´Ñ¡¿ò¶ÔÏó
     AttemperForm *attemperForm;
-    QTextEdit *descriptionedit; // æ˜¾ç¤ºè§’è‰²æè¿°ä¿¡æ¯çš„æ–‡æœ¬å¯¹è±¡
+    QTextEdit *descriptionedit; // ÏÔÊ¾½ÇÉ«ÃèÊöĞÅÏ¢µÄÎÄ±¾¶ÔÏó
 };
 
 #endif // ROLESELECT_H

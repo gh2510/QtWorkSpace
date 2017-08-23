@@ -20,6 +20,11 @@
 	background-color: rgb(170, 85, 255);
 }
 
+QLabel
+{
+	
+	font: 16pt &quot;楷体&quot;;
+}
 
 QPushButton
 {
