@@ -37,7 +37,9 @@ int main(int argc, char *argv[])
     ConfigParse configParse;
     RoleSelect *roleSelectWidget = new RoleSelect();
     QString str = configParse.pasreConfigFile("final.xml");
-    qDebug()<<str;
+
+    // 获取规则
+    MainWindow::attmper->AddAttemperRules(configParse.getAttemperRules());
 
     MainWindow mainWindow;
     mainWindow.hide();

@@ -18,10 +18,18 @@ class Attemper
 public:
     Attemper();
     QString ChangeRole(CombatPosition combatPosition); // 切换角色， 进行调度
+    void AddAttemperRules(QList<AttemptRule> templist)
+    {
+        for(int i=0;i<templist.count();i++)
+        {
+            attemperRules.push_back(templist.at(i));
+        }
+    }
+
 private:
     QString Attepmer_To_HuaBuTool(QString roleName,int roleId); // 根据当前角色，向画布客户端下达本次调度方案
     QString Attemper_To_VM(QString vm_IP, int pageId = 0); // 接收调度信息并向远程虚拟机上的调度客户端发送调度指令
-public:
+private:
     QList<AttemptRule> attemperRules;  // 调度规则列表 记录每个角色下，每个屏幕对应的页面代号
 private:
     QUdpSocket udp_ToHuaBu;
